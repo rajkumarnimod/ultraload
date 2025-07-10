@@ -1,0 +1,39 @@
+{
+  "name": "ultraload",
+  "version": "1.0.0",
+  "description": "Universal loading spinner library",
+  "main": "dist/ultraload.cjs.js",
+  "module": "dist/ultraload.esm.js",
+  "unpkg": "dist/ultraload.umd.min.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "preloader",
+    "loading",
+    "spinner",
+    "animation",
+    "ui"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.7",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "postcss": "^8.5.6",
+    "rollup": "^3.29.5",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "peerDependencies": {
+    "lottie-web": "^5.8.0"
+  }
+}

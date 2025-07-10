@@ -1,0 +1,2264 @@
+/* Core Styles */
+.ultraload-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background: var(--ultraload-bg, rgba(255, 255, 255, 0.9));
+    transition: opacity 0.5s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    pointer-events: none;
+}
+
+.ultraload-container.ultraload-hide {
+    opacity: 0;
+}
+
+.ultraload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 90%;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* Loader Icons - 50+ Types */
+.ultraload-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* 1. Default Spinner */
+.ultraload-icon-default {
+    border: 4px solid var(--ultraload-primary, rgba(0, 0, 0, 0.1));
+    border-radius: 50%;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-spin 1s linear infinite;
+}
+
+/* 2. Dots Circle */
+.ultraload-icon-dots-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ultraload-icon-dots-circle::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    box-shadow:
+        24px 0 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3)),
+        -24px 0 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3)),
+        0 24px 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3)),
+        0 -24px 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3)),
+        17px 17px 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3)),
+        -17px 17px 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3)),
+        17px -17px 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3)),
+        -17px -17px 0 var(--ultraload-primary, rgba(0, 0, 0, 0.3));
+    animation: ultraload-pulse 1.5s infinite ease-in-out;
+}
+
+/* 3. Wave */
+.ultraload-icon-wave {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 50px;
+    height: 40px;
+}
+
+.ultraload-icon-wave div {
+    width: 6px;
+    height: 10px;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-wave 1s ease infinite;
+}
+
+/* 4. Cube Grid */
+.ultraload-icon-cube-grid {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 3px;
+}
+
+.ultraload-icon-cube-grid div {
+    background: var(--ultraload-accent, #00d4ff);
+    opacity: 0;
+    animation: ultraload-cube-grid 1.5s infinite ease;
+}
+
+/* 5. Ring */
+.ultraload-icon-ring {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-bottom-color: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-spin 1s linear infinite;
+}
+
+/* 6. Bar Jump */
+.ultraload-icon-bar-jump {
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.ultraload-icon-bar-jump div {
+    width: 6px;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-bar-jump 1s ease infinite;
+}
+
+/* 7. Circle Bounce */
+.ultraload-icon-circle-bounce {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.ultraload-icon-circle-bounce div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-circle-bounce 1.5s infinite ease-in-out;
+}
+
+/* 8. Dual Ring */
+.ultraload-icon-dual-ring {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-bottom-color: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-spin 1.2s linear infinite;
+}
+
+.ultraload-icon-dual-ring::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-primary, rgba(0, 0, 0, 0.3));
+    border-bottom-color: var(--ultraload-primary, rgba(0, 0, 0, 0.3));
+    animation: ultraload-spin 0.8s linear reverse infinite;
+}
+
+/* 9. Folding Cube */
+.ultraload-icon-folding-cube {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.ultraload-icon-folding-cube div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-fold-cube 2.4s infinite both;
+    transform-origin: 100% 100%;
+}
+
+/* 10. Chase */
+.ultraload-icon-chase {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    animation: ultraload-chase-rotate 2.5s infinite linear both;
+}
+
+.ultraload-icon-chase-dot {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: ultraload-chase-dot 2s infinite ease-in-out both;
+}
+
+.ultraload-icon-chase-dot::before {
+    content: '';
+    display: block;
+    width: 25%;
+    height: 25%;
+    background: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-chase-dot-before 2s infinite ease-in-out both;
+}
+
+/* 11. Circle Dots */
+.ultraload-icon-circle-dots {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-circle-dots div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+/* 12. Ellipsis */
+.ultraload-icon-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.ultraload-icon-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+/* 13. Grid */
+.ultraload-icon-grid {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.ultraload-icon-grid div {
+    background-color: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-grid-scale 1.5s infinite ease;
+}
+
+/* 14. Hourglass */
+.ultraload-icon-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.ultraload-icon-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 6px;
+    box-sizing: border-box;
+    border: 26px solid var(--ultraload-accent, #00d4ff);
+    border-color: var(--ultraload-accent, #00d4ff) transparent var(--ultraload-accent, #00d4ff) transparent;
+    animation: ultraload-hourglass 1.2s infinite;
+}
+
+/* 15. Jelly Box */
+.ultraload-icon-jelly-box {
+    position: relative;
+    width: 54px;
+    height: 54px;
+}
+
+.ultraload-icon-jelly-box div {
+    float: left;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    transform: scale(1.1);
+}
+
+.ultraload-icon-jelly-box div:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-jelly-box 2.4s infinite linear;
+    transform-origin: 100% 100%;
+}
+
+/* 16. Orbit */
+.ultraload-icon-orbit {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    perspective: 800px;
+}
+
+.ultraload-icon-orbit-inner {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-orbit 1s linear infinite;
+}
+
+/* 17. Pacman */
+.ultraload-icon-pacman {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.ultraload-icon-pacman:before,
+.ultraload-icon-pacman:after {
+    content: '';
+    position: absolute;
+    background: var(--ultraload-accent, #00d4ff);
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    animation: ultraload-pacman-top 0.5s infinite;
+}
+
+.ultraload-icon-pacman:after {
+    top: 50%;
+    animation: ultraload-pacman-bottom 0.5s infinite;
+}
+
+/* 18. Pulsar */
+.ultraload-icon-pulsar {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-pulsar:before,
+.ultraload-icon-pulsar:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid var(--ultraload-accent, #00d4ff);
+    animation: ultraload-pulsar 1.5s linear infinite;
+}
+
+.ultraload-icon-pulsar:after {
+    animation-delay: -0.75s;
+}
+
+/* 19. Ripple */
+.ultraload-icon-ripple {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-ripple div {
+    position: absolute;
+    border: 4px solid var(--ultraload-accent, #00d4ff);
+    opacity: 1;
+    border-radius: 50%;
+    animation: ultraload-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.ultraload-icon-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+/* 20. Roller */
+.ultraload-icon-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.ultraload-icon-roller div {
+    animation: ultraload-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+
+.ultraload-icon-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    margin: -4px 0 0 -4px;
+}
+
+/* 21. Spinner */
+.ultraload-icon-spinner {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-spinner div {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.ultraload-icon-spinner div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.ultraload-icon-spinner div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.ultraload-icon-spinner div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+/* 22. Square Spin */
+.ultraload-icon-square-spin {
+    width: 50px;
+    height: 50px;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-square-spin 3s infinite ease-in-out;
+}
+
+/* 23. Swirl */
+.ultraload-icon-swirl {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-swirl div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    opacity: 1;
+    animation: ultraload-swirl 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+/* 24. Timer */
+.ultraload-icon-timer {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-timer:before,
+.ultraload-icon-timer:after {
+    content: '';
+    position: absolute;
+    background: var(--ultraload-accent, #00d4ff);
+    width: 4px;
+    border-radius: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ultraload-icon-timer:before {
+    height: 16px;
+    top: 12px;
+    animation: ultraload-timer-before 2s linear infinite;
+}
+
+.ultraload-icon-timer:after {
+    height: 12px;
+    top: 30px;
+    animation: ultraload-timer-after 2s linear infinite;
+}
+
+/* 25. Wobble */
+.ultraload-icon-wobble {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-wobble div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-wobble 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--ultraload-accent, #00d4ff) transparent transparent transparent;
+}
+
+.ultraload-icon-wobble div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.ultraload-icon-wobble div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.ultraload-icon-wobble div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+/* 26. Zigzag */
+.ultraload-icon-zigzag {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-zigzag div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-zigzag 1.5s infinite ease;
+}
+
+/* 27. Atom */
+.ultraload-icon-atom {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.ultraload-icon-atom div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: ultraload-atom-rotate 1s linear infinite;
+}
+
+.ultraload-icon-atom div:before,
+.ultraload-icon-atom div:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ultraload-icon-atom div:after {
+    top: auto;
+    bottom: 0;
+}
+
+/* 28. Infinity */
+.ultraload-icon-infinity {
+    width: 60px;
+    height: 30px;
+    position: relative;
+}
+
+.ultraload-icon-infinity div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 4px solid var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-infinity-left 2s infinite;
+}
+
+.ultraload-icon-infinity div:nth-child(2) {
+    left: 30px;
+    animation-name: ultraload-infinity-right;
+}
+
+/* 29. Metronome */
+.ultraload-icon-metronome {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-metronome div {
+    position: absolute;
+    width: 6px;
+    height: 30px;
+    background: var(--ultraload-accent, #00d4ff);
+    left: 50%;
+    top: 10px;
+    transform-origin: 50% 0;
+    animation: ultraload-metronome 1s ease-in-out infinite;
+}
+
+/* 30. Moon */
+.ultraload-icon-moon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 15px -15px 0 0 var(--ultraload-accent, #00d4ff);
+    animation: ultraload-moon 1s ease-in-out infinite alternate;
+}
+
+/* 31. Newton Cradle */
+.ultraload-icon-newton-cradle {
+    width: 80px;
+    height: 30px;
+    position: relative;
+}
+
+.ultraload-icon-newton-cradle div {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    top: 0;
+    animation: ultraload-newton-cradle 1.5s ease-in-out infinite;
+}
+
+/* 32. Pinwheel */
+.ultraload-icon-pinwheel {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-pinwheel div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-pinwheel 1.5s infinite ease;
+}
+
+/* 33. Radar */
+.ultraload-icon-radar {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-radar div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    opacity: 1;
+    animation: ultraload-radar 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+/* 34. Revolving Dot */
+.ultraload-icon-revolving-dot {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-revolving-dot div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-revolving-dot 1.5s infinite ease;
+}
+
+/* 35. Scaling Squares */
+.ultraload-icon-scaling-squares {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-scaling-squares div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-scaling-squares 1.5s infinite ease;
+}
+
+/* 36. Semi Circle */
+.ultraload-icon-semi-circle {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-semi-circle div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-semi-circle 1s linear infinite;
+}
+
+/* 37. Spinning Circles */
+.ultraload-icon-spinning-circles {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-spinning-circles div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-spinning-circles 1.5s linear infinite;
+}
+
+/* 38. Spring */
+.ultraload-icon-spring {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-spring div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-spring 1.5s infinite ease;
+}
+
+/* 39. Stretch */
+.ultraload-icon-stretch {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-stretch div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-stretch 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+/* 40. Trefoil */
+.ultraload-icon-trefoil {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-trefoil div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-trefoil 1.5s linear infinite;
+}
+
+/* 41. Twin Circles */
+.ultraload-icon-twin-circles {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-twin-circles div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-twin-circles 1.5s infinite ease;
+}
+
+/* 42. Vortex */
+.ultraload-icon-vortex {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-vortex div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-vortex 1.5s linear infinite;
+}
+
+/* 43. Whirl */
+.ultraload-icon-whirl {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-whirl div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-whirl 1.5s linear infinite;
+}
+
+/* 44. Windmill */
+.ultraload-icon-windmill {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-windmill div {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background: var(--ultraload-accent, #00d4ff);
+    left: 50%;
+    top: 10px;
+    transform-origin: 50% 0;
+    animation: ultraload-windmill 1s ease-in-out infinite;
+}
+
+/* 45. Yin Yang */
+.ultraload-icon-yin-yang {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    animation: ultraload-yin-yang-rotate 2s linear infinite;
+}
+
+.ultraload-icon-yin-yang:before,
+.ultraload-icon-yin-yang:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    border: 10px solid var(--ultraload-primary, rgba(0, 0, 0, 0.1));
+}
+
+.ultraload-icon-yin-yang:after {
+    top: 25px;
+    background: var(--ultraload-primary, rgba(0, 0, 0, 0.1));
+    border-color: var(--ultraload-accent, #00d4ff);
+}
+
+/* 46. Zigzag Circle */
+.ultraload-icon-zigzag-circle {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ultraload-icon-zigzag-circle div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-zigzag-circle 1.5s linear infinite;
+}
+
+/* 47. DNA */
+.ultraload-icon-dna {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.ultraload-icon-dna div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-dna 2s infinite ease;
+}
+
+/* 48. Ferris Wheel */
+.ultraload-icon-ferris-wheel {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.ultraload-icon-ferris-wheel div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-ferris-wheel 2s infinite ease;
+}
+
+/* 49. Galaxy */
+.ultraload-icon-galaxy {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.ultraload-icon-galaxy div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-galaxy 2s infinite ease;
+}
+
+/* 50. Hyperspace */
+.ultraload-icon-hyperspace {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.ultraload-icon-hyperspace div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: var(--ultraload-accent, #00d4ff);
+    border-radius: 50%;
+    animation: ultraload-hyperspace 1.5s linear infinite;
+}
+
+/* 51. Quantum */
+.ultraload-icon-quantum {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.ultraload-icon-quantum div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ultraload-accent, #00d4ff);
+    animation: ultraload-quantum 2s infinite ease;
+}
+
+/* Text Styles */
+.ultraload-text {
+    color: var(--ultraload-text-color, #333);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* Progress Bar */
+.ultraload-progress {
+    width: 200px;
+    height: 4px;
+    background: var(--ultraload-progress-bg, rgba(0, 0, 0, 0.1));
+    margin-top: 20px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.ultraload-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--ultraload-progress-color, linear-gradient(90deg, #00d4ff, #ff005e));
+    transition: width 0.1s linear;
+}
+
+.ultraload-progress-percentage {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: var(--ultraload-text-color, #333);
+}
+
+/* Lottie Container */
+.ultraload-lottie-container {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+/* Logo Animation */
+.ultraload-logo {
+    max-width: 120px;
+    max-height: 60px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: ultraload-fadeIn 0.5s forwards;
+}
+
+/* Animation Keyframes */
+@keyframes ultraload-spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-pulse {
+
+    0%,
+    100% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.2)
+    }
+}
+
+@keyframes ultraload-wave {
+
+    0%,
+    100% {
+        height: 10px
+    }
+
+    50% {
+        height: 30px
+    }
+}
+
+@keyframes ultraload-cube-grid {
+
+    0%,
+    70%,
+    100% {
+        opacity: 0.1
+    }
+
+    35% {
+        opacity: 1
+    }
+}
+
+@keyframes ultraload-bar-jump {
+
+    0%,
+    100% {
+        height: 10px
+    }
+
+    25% {
+        height: 30px
+    }
+
+    50% {
+        height: 20px
+    }
+
+    75% {
+        height: 30px
+    }
+}
+
+@keyframes ultraload-circle-bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0)
+    }
+
+    40% {
+        transform: scale(1)
+    }
+}
+
+@keyframes ultraload-fold-cube {
+
+    0%,
+    10% {
+        transform: perspective(140px) rotateX(-180deg);
+        opacity: 0;
+    }
+
+    25%,
+    75% {
+        transform: perspective(140px) rotateX(0deg);
+        opacity: 1;
+    }
+
+    90%,
+    100% {
+        transform: perspective(140px) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes ultraload-chase-rotate {
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-chase-dot {
+
+    80%,
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-chase-dot-before {
+    50% {
+        transform: scale(0.4)
+    }
+
+    100%,
+    0% {
+        transform: scale(1)
+    }
+}
+
+@keyframes ultraload-circle-dots1 {
+    0% {
+        transform: scale(0)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+@keyframes ultraload-circle-dots2 {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    100% {
+        transform: translate(24px, 0)
+    }
+}
+
+@keyframes ultraload-circle-dots3 {
+    0% {
+        transform: scale(1)
+    }
+
+    100% {
+        transform: scale(0)
+    }
+}
+
+@keyframes ultraload-fadeIn {
+    to {
+        opacity: 1
+    }
+}
+
+/* New loader animations */
+@keyframes ultraload-grid-scale {
+
+    0%,
+    70%,
+    100% {
+        transform: scale3d(1, 1, 1)
+    }
+
+    35% {
+        transform: scale3d(0, 0, 1)
+    }
+}
+
+@keyframes ultraload-hourglass {
+    0% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    50% {
+        transform: rotate(900deg);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    100% {
+        transform: rotate(1800deg)
+    }
+}
+
+@keyframes ultraload-jelly-box {
+
+    0%,
+    100% {
+        transform: scale3d(1, 1, 1)
+    }
+
+    25% {
+        transform: scale3d(1.5, 0.5, 1)
+    }
+
+    50% {
+        transform: scale3d(0.5, 1.5, 1)
+    }
+
+    75% {
+        transform: scale3d(1.2, 0.8, 1)
+    }
+}
+
+@keyframes ultraload-orbit {
+    0% {
+        transform: rotateX(35deg) rotateY(45deg) rotateZ(0deg)
+    }
+
+    100% {
+        transform: rotateX(35deg) rotateY(45deg) rotateZ(360deg)
+    }
+}
+
+@keyframes ultraload-pacman-top {
+
+    0%,
+    100% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(-45deg)
+    }
+}
+
+@keyframes ultraload-pacman-bottom {
+
+    0%,
+    100% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(45deg)
+    }
+}
+
+@keyframes ultraload-pulsar {
+    0% {
+        transform: scale(0.5);
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0
+    }
+}
+
+@keyframes ultraload-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0;
+        left: 0;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
+
+@keyframes ultraload-roller {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-spinner {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-square-spin {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    }
+
+    50% {
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg)
+    }
+}
+
+@keyframes ultraload-swirl {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-timer-before {
+    0% {
+        transform: translateX(-50%) rotate(0deg)
+    }
+
+    50%,
+    100% {
+        transform: translateX(-50%) rotate(180deg)
+    }
+}
+
+@keyframes ultraload-timer-after {
+
+    0%,
+    50% {
+        transform: translateX(-50%) rotate(0deg)
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(180deg)
+    }
+}
+
+@keyframes ultraload-wobble {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-zigzag {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 20px)
+    }
+
+    50% {
+        transform: translate(10px, 10px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+@keyframes ultraload-atom-rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-infinity-left {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    50% {
+        transform: translateX(-10px)
+    }
+}
+
+@keyframes ultraload-infinity-right {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    50% {
+        transform: translateX(10px)
+    }
+}
+
+@keyframes ultraload-metronome {
+
+    0%,
+    100% {
+        transform: rotate(-30deg)
+    }
+
+    50% {
+        transform: rotate(30deg)
+    }
+}
+
+@keyframes ultraload-moon {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-newton-cradle {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    25% {
+        transform: translateX(-30px)
+    }
+
+    50% {
+        transform: translateX(0)
+    }
+
+    75% {
+        transform: translateX(30px)
+    }
+}
+
+@keyframes ultraload-pinwheel {
+
+    0%,
+    100% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(180deg)
+    }
+}
+
+@keyframes ultraload-radar {
+    0% {
+        transform: scale(0);
+        opacity: 1
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0
+    }
+}
+
+@keyframes ultraload-revolving-dot {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 0)
+    }
+
+    50% {
+        transform: translate(20px, 20px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+@keyframes ultraload-scaling-squares {
+
+    0%,
+    100% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(0.5)
+    }
+}
+
+@keyframes ultraload-semi-circle {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-spinning-circles {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-spring {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 0)
+    }
+
+    50% {
+        transform: translate(20px, 20px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+@keyframes ultraload-stretch {
+    0% {
+        transform: scale(0.5);
+        opacity: 1
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0
+    }
+}
+
+@keyframes ultraload-trefoil {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-twin-circles {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 0)
+    }
+
+    50% {
+        transform: translate(20px, 20px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+@keyframes ultraload-vortex {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-whirl {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-windmill {
+
+    0%,
+    100% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-yin-yang-rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-zigzag-circle {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-dna {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 0)
+    }
+
+    50% {
+        transform: translate(20px, 20px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+@keyframes ultraload-ferris-wheel {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 0)
+    }
+
+    50% {
+        transform: translate(20px, 20px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+@keyframes ultraload-galaxy {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 0)
+    }
+
+    50% {
+        transform: translate(20px, 20px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+@keyframes ultraload-hyperspace {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes ultraload-quantum {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(20px, 0)
+    }
+
+    50% {
+        transform: translate(20px, 20px)
+    }
+
+    75% {
+        transform: translate(0, 20px)
+    }
+}
+
+/* Text Animations - 30+ Types */
+.ultraload-animate-typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--ultraload-accent, #00d4ff);
+    animation: ultraload-typing 3s steps(40) 1s 1 normal both,
+        ultraload-blinking-cursor 500ms steps(40) infinite normal;
+}
+
+@keyframes ultraload-typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes ultraload-blinking-cursor {
+    from {
+        border-right-color: var(--ultraload-accent, #00d4ff)
+    }
+
+    to {
+        border-right-color: transparent
+    }
+}
+
+.ultraload-animate-fadeIn {
+    opacity: 0;
+    animation: ultraload-fadeIn 1.5s ease-in forwards;
+}
+
+.ultraload-animate-fadeInUp {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: ultraload-fadeInUp 1s ease forwards;
+}
+
+@keyframes ultraload-fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.ultraload-animate-bounceIn {
+    animation: ultraload-bounceIn 1s ease forwards;
+}
+
+@keyframes ultraload-bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1
+    }
+
+    70% {
+        transform: scale(0.9)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+.ultraload-animate-rubberBand {
+    animation: ultraload-rubberBand 1s ease forwards;
+}
+
+@keyframes ultraload-rubberBand {
+    0% {
+        transform: scaleX(1)
+    }
+
+    30% {
+        transform: scaleX(1.25) scaleY(0.75)
+    }
+
+    40% {
+        transform: scaleX(0.75) scaleY(1.25)
+    }
+
+    60% {
+        transform: scaleX(1.15) scaleY(0.85)
+    }
+
+    100% {
+        transform: scaleX(1) scaleY(1)
+    }
+}
+
+.ultraload-animate-wave span {
+    display: inline-block;
+    animation: ultraload-wave-text 2s ease-in-out infinite;
+}
+
+@keyframes ultraload-wave-text {
+
+    0%,
+    100% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-15px)
+    }
+}
+
+.ultraload-animate-glitch {
+    position: relative;
+    animation: ultraload-glitch 2s infinite;
+}
+
+.ultraload-animate-glitch::before,
+.ultraload-animate-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ultraload-animate-glitch::before {
+    color: var(--ultraload-glitch-1, #ff005e);
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    animation: ultraload-glitch 2s infinite;
+}
+
+.ultraload-animate-glitch::after {
+    color: var(--ultraload-glitch-2, #00d4ff);
+    clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+    animation: ultraload-glitch 2s infinite reverse;
+}
+
+@keyframes ultraload-glitch {
+
+    0%,
+    100% {
+        transform: translate(0)
+    }
+
+    20% {
+        transform: translate(-2px, 2px)
+    }
+
+    40% {
+        transform: translate(2px, -2px)
+    }
+
+    60% {
+        transform: translate(-1px, 1px)
+    }
+
+    80% {
+        transform: translate(1px, -1px)
+    }
+}
+
+.ultraload-animate-neon {
+    text-shadow: 0 0 5px var(--ultraload-neon-1, #0066ff),
+        0 0 10px var(--ultraload-neon-1, #0066ff),
+        0 0 20px var(--ultraload-neon-1, #0066ff);
+    animation: ultraload-neon-glow 1.5s infinite alternate;
+}
+
+@keyframes ultraload-neon-glow {
+    0% {
+        text-shadow: 0 0 5px var(--ultraload-neon-1, #0066ff),
+            0 0 10px var(--ultraload-neon-1, #0066ff),
+            0 0 20px var(--ultraload-neon-1, #0066ff);
+    }
+
+    100% {
+        text-shadow: 0 0 10px var(--ultraload-neon-2, #00d4ff),
+            0 0 20px var(--ultraload-neon-2, #00d4ff),
+            0 0 40px var(--ultraload-neon-2, #00d4ff);
+    }
+}
+
+.ultraload-animate-shadow-dance {
+    text-shadow: 5px 5px 0 var(--ultraload-shadow-1, #ff005e),
+        10px 10px 0 var(--ultraload-shadow-2, #00d4ff);
+    animation: ultraload-shadow-dance 2s infinite;
+}
+
+@keyframes ultraload-shadow-dance {
+
+    0%,
+    100% {
+        text-shadow: 5px 5px 0 var(--ultraload-shadow-1, #ff005e),
+            10px 10px 0 var(--ultraload-shadow-2, #00d4ff);
+    }
+
+    50% {
+        text-shadow: -5px -5px 0 var(--ultraload-shadow-2, #00d4ff),
+            -10px -10px 0 var(--ultraload-shadow-1, #ff005e);
+    }
+}
+
+.ultraload-animate-dropping {
+    display: inline-block;
+    text-align: left;
+    height: 1.5em;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.ultraload-animate-dropping>div {
+    font-size: 0;
+    opacity: 0;
+    margin-left: -30px;
+    position: absolute;
+    animation: ultraload-dropping 5s linear infinite;
+}
+
+/* New Text Animations */
+.ultraload-animate-zoomIn {
+    animation: ultraload-zoomIn 1s ease forwards;
+}
+
+@keyframes ultraload-zoomIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.ultraload-animate-flipInX {
+    backface-visibility: visible !important;
+    animation: ultraload-flipInX 1s ease forwards;
+}
+
+@keyframes ultraload-flipInX {
+    0% {
+        transform: perspective(400px) rotateX(90deg);
+        opacity: 0
+    }
+
+    40% {
+        transform: perspective(400px) rotateX(-20deg)
+    }
+
+    70% {
+        transform: perspective(400px) rotateX(10deg)
+    }
+
+    100% {
+        transform: perspective(400px) rotateX(0deg);
+        opacity: 1
+    }
+}
+
+.ultraload-animate-rotateIn {
+    transform-origin: center;
+    animation: ultraload-rotateIn 1s ease forwards;
+}
+
+@keyframes ultraload-rotateIn {
+    0% {
+        transform: rotate(-180deg);
+        opacity: 0
+    }
+
+    100% {
+        transform: rotate(0deg);
+        opacity: 1
+    }
+}
+
+.ultraload-animate-slideInDown {
+    transform: translateY(-100%);
+    animation: ultraload-slideInDown 1s ease forwards;
+}
+
+@keyframes ultraload-slideInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+.ultraload-animate-pulse {
+    animation: ultraload-pulse-text 1.5s infinite;
+}
+
+@keyframes ultraload-pulse-text {
+
+    0%,
+    100% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.1)
+    }
+}
+
+.ultraload-animate-shake {
+    animation: ultraload-shake 0.5s ease infinite;
+}
+
+@keyframes ultraload-shake {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    20%,
+    60% {
+        transform: translateX(-10px)
+    }
+
+    40%,
+    80% {
+        transform: translateX(10px)
+    }
+}
+
+.ultraload-animate-jello {
+    transform-origin: center;
+    animation: ultraload-jello 1s ease infinite;
+}
+
+@keyframes ultraload-jello {
+
+    0%,
+    100% {
+        transform: scale3d(1, 1, 1)
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1)
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1)
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1)
+    }
+
+    65% {
+        transform: scale3d(0.95, 1.05, 1)
+    }
+
+    75% {
+        transform: scale3d(1.05, 0.95, 1)
+    }
+}
+
+.ultraload-animate-lightSpeedIn {
+    animation: ultraload-lightSpeedIn 1s ease forwards;
+}
+
+@keyframes ultraload-lightSpeedIn {
+    0% {
+        transform: translateX(100%) skewX(-30deg);
+        opacity: 0
+    }
+
+    60% {
+        transform: translateX(-20%) skewX(30deg);
+        opacity: 1
+    }
+
+    80% {
+        transform: translateX(0%) skewX(-15deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateX(0%) skewX(0deg);
+        opacity: 1
+    }
+}
+
+/* Themes */
+.ultraload-theme-light {
+    --ultraload-bg: rgba(255, 255, 255, 0.95);
+    --ultraload-text-color: #333;
+    --ultraload-primary: rgba(0, 0, 0, 0.1);
+    --ultraload-accent: #00d4ff;
+    --ultraload-progress-bg: rgba(0, 0, 0, 0.1);
+    --ultraload-progress-color: #00d4ff;
+    --ultraload-neon-1: #0066ff;
+    --ultraload-neon-2: #00d4ff;
+    --ultraload-shadow-1: #0066ff;
+    --ultraload-shadow-2: #00d4ff;
+    --ultraload-glitch-1: #0066ff;
+    --ultraload-glitch-2: #00d4ff;
+}
+
+.ultraload-theme-dark {
+    --ultraload-bg: rgba(0, 0, 0, 0.9);
+    --ultraload-text-color: #fff;
+    --ultraload-primary: rgba(255, 255, 255, 0.1);
+    --ultraload-accent: #ff005e;
+    --ultraload-progress-bg: rgba(255, 255, 255, 0.1);
+    --ultraload-progress-color: #ff005e;
+    --ultraload-neon-1: #ff005e;
+    --ultraload-neon-2: #ff8a00;
+    --ultraload-shadow-1: #ff005e;
+    --ultraload-shadow-2: #ff8a00;
+    --ultraload-glitch-1: #ff005e;
+    --ultraload-glitch-2: #ff8a00;
+}
+
+.ultraload-theme-dark-blur {
+    --ultraload-bg: rgba(0, 0, 0, 0.7);
+    --ultraload-text-color: #fff;
+    --ultraload-primary: rgba(255, 255, 255, 0.1);
+    --ultraload-accent: #00d4ff;
+    --ultraload-progress-bg: rgba(255, 255, 255, 0.1);
+    --ultraload-progress-color: linear-gradient(90deg, #00d4ff, #ff005e);
+    --ultraload-neon-1: #00d4ff;
+    --ultraload-neon-2: #ff005e;
+    --ultraload-shadow-1: #00d4ff;
+    --ultraload-shadow-2: #ff005e;
+    --ultraload-glitch-1: #00d4ff;
+    --ultraload-glitch-2: #ff005e;
+    backdrop-filter: blur(5px);
+}
+
+.ultraload-theme-glass-dark {
+    --ultraload-bg: rgba(0, 0, 0, 0.5);
+    --ultraload-text-color: #fff;
+    --ultraload-primary: rgba(255, 255, 255, 0.1);
+    --ultraload-accent: #00f5d4;
+    --ultraload-progress-bg: rgba(255, 255, 255, 0.1);
+    --ultraload-progress-color: linear-gradient(90deg, #00f5d4, #0088ff);
+    --ultraload-neon-1: #00f5d4;
+    --ultraload-neon-2: #0088ff;
+    --ultraload-shadow-1: #00f5d4;
+    --ultraload-shadow-2: #0088ff;
+    --ultraload-glitch-1: #00f5d4;
+    --ultraload-glitch-2: #0088ff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Accessibility */
+.ultraload-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .ultraload-text {
+        font-size: 1rem;
+    }
+
+    .ultraload-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .ultraload-progress {
+        width: 150px;
+    }
+
+    .ultraload-lottie-container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .ultraload-logo {
+        max-width: 100px;
+        max-height: 50px;
+    }
+}
